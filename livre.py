@@ -24,7 +24,7 @@ def parse_args() -> argparse.Namespace:
     if args.output_filepath is None:
         # If filepath is `foo/bar/baz.lv`, then the line below returns `baz`
         basename: str = os.path.splitext(os.path.basename(args.input_filepath))[0]
-        args.output_filepath = f"basename.{args.output_filetype}" # Add extension based on requested filetype
+        args.output_filepath = f"{basename}.{args.output_filetype}" # Add extension based on requested filetype
 
     return args
 
