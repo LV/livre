@@ -8,9 +8,9 @@ import os
 import sys
 
 
-def parse_file(file: str):
+def parse_file(file_content: str, file_type: str) -> str:
     """Parses the file"""
-    print(file) # stub
+    return file_content
 
 
 def parse_args() -> argparse.Namespace:
@@ -33,8 +33,9 @@ def main() -> None:
     """Handles command line arguments"""
     args: argparse.Namespace = parse_args()
 
-    with open(args.input_filepath, "r") as file:
-        parse_file(file.read())
+    with open(args.input_filepath, "r") as input:
+        with open(args.output_filepath, "w") as output:
+            output.write(parse_file(input.read(), args.output_filetype))
 
 
 if __name__ == "__main__":
