@@ -8,9 +8,9 @@ import os
 import sys
 
 
-def parse_file():
+def parse_file(file: str):
     """Parses the file"""
-    print("Hello Livre")
+    print(file) # stub
 
 
 def parse_args() -> argparse.Namespace:
@@ -34,7 +34,7 @@ def main() -> None:
     args: argparse.Namespace = parse_args()
 
     with open(args.input_filepath, "r") as file:
-        parse_file(args.input_filepath.read())
+        parse_file(file.read())
 
 
 if __name__ == "__main__":
