@@ -8,7 +8,7 @@ import os
 import sys
 
 
-def parse():
+def parse_file():
     """Parses the file"""
     print("Hello Livre")
 
@@ -17,8 +17,8 @@ def parse_args() -> argparse.Namespace:
     """Parse CLI args"""
     parser: argparse.ArgumentParser = argparse.ArgumentParser()
     parser.add_argument("input_filepath", help="Input file path")
-    parser.add_argument("output_filetype", choices=["html", "md"], default="html", help="Input file type (default: 'html')")
-    parser.add_argument("output_filepath", help="Output file path (optional)", nargs="?") # Optional
+    parser.add_argument("output_filetype", nargs="?", choices=["html", "md"], default="html", help="Input file type (default: 'html')")
+    parser.add_argument("output_filepath", nargs="?", help="Output file path (optional)")
     args = parser.parse_args()
 
     if args.output_filepath is None:
@@ -33,10 +33,8 @@ def main() -> None:
     """Handles command line arguments"""
     args: argparse.Namespace = parse_args()
 
-    filename = sys.argv[1] # second argument is the file to parse
-
-    with open(filename, "r") as file:
-        parse(file.read())
+    with open(args.input_filepath, "r") as file:
+        parse_file(args.input_filepath.read())
 
 
 if __name__ == "__main__":
